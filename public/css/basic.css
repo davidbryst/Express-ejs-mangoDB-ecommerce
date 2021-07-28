@@ -1,0 +1,35 @@
+:root {
+    --violet: #892be28f;
+    --violet-1: #341153e1;
+    --violet-2: #1f0a33e1;
+    --white: #ffffff;
+    --white-1: #f6f5f7;
+    --gray: #dcdcdc3b;
+    --gray-1: #c9c9c93b;
+    --gray-2: #716683;
+    --dark: #00000098;
+    /*  */
+    --radius: 0.3rem;
+}
+*,
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+.center,
+.content,
+.foot,
+.head {
+    width: 100%;
+}

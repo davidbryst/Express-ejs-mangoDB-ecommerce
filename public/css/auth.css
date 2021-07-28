@@ -1,0 +1,101 @@
+/* center */
+.center {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 80vh auto;
+    row-gap: 1rem;
+    padding-top: 12vh;
+    background-color: var(--white-1);
+}
+.center .auth {
+    background-color: var(--white);
+    grid-column: 3/6;
+    position: relative;
+}
+.center .auth .auth-content{
+    position: absolute;
+    display: grid;
+    width: 50%;
+    overflow: hidden;
+    grid-template-columns: 100% 100%;
+    grid-template-rows: 100%;
+    transition: all 1.5s;
+}
+.center .auth .auth-content > * {
+    transition: all 1.5s;
+}
+.center .auth .auth-content form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.center .auth .auth-content form > * {
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+.center .auth .auth-content form input,
+.center .auth .auth-content form .sexe {
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    border: none;
+    box-shadow: 0 0 0.5rem var(--gray);
+    border-radius: var(--radius);
+}
+.center .auth .auth-content form button {
+    background-color: var(--violet);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    color: var(--white);
+}
+.center .auth .auth-content form h1 {
+    font-weight: bolder;
+    margin-top: 5rem;
+    color: var(--violet);
+}
+.center .auth .auth-content form input[type="text"],
+.center .auth .auth-content form input[type="number"],
+.center .auth .auth-content form input[type="email"],
+.center .auth .auth-content form input[type="password"],
+.center .auth .auth-content form .sexe {
+    width: 15rem;
+    color: var(--dark);
+}
+.center .auth .splash {
+    background-image: linear-gradient(90deg, #cd2be2, violet);
+    height: 100%;
+    width: 50%;
+    z-index: 10;
+    color: var(--white);
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 100% 100%;
+    grid-template-rows: 100%;
+    transition: all 1s;
+}
+.center .auth .splash > * {
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.center .auth .splash > * > * {
+    margin-top: 1.5rem;
+}
+.center .auth .splash > * > button {
+    background-color: transparent;
+    border: 1px solid var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    color: var(--white);
+}
+.tm100 {
+    transform: translateX(-100%);
+}
+.tp100 {
+    transform: translateX(100%);
+}
