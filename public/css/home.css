@@ -39,7 +39,7 @@
 }
 /* element prod */
 .center .prod-element {
-    background-image: url("/images/setup-iMac.jpg");
+    background-image: url("/images/productLoadImage.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
