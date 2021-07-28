@@ -1,0 +1,19 @@
+<div class="head">
+    <div id="logo"><a href="/"><i class="fab fa-opencart"></i></a><a style="display: none;" href="/">Keby<span>.</span></a></div>
+    <form action="">
+        <div>
+            <input type="search" name="search" id="search">
+            <button type="submit">search</button>
+        </div>
+    </form>
+    <ul>
+        <% if (user) { %>
+            <li>welcome <%= user.username %> </li>
+            <li><a href="/logout">logout</a></li>
+        <% } else { %>
+            <li><a href="/auth"><i class="fas fa-user-circle"></i></a></li>
+        <% } %>
+        <li><a href=""><i class="fas fa-heart"></i></a></li>
+        <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+    </ul>
+</div>

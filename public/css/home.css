@@ -1,0 +1,72 @@
+/* center */
+.center {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 10vh 1fr;
+    padding-top: 10vh;
+    row-gap: 1rem;
+    background-color: var(--white-1);
+}
+.center .head-center {
+    grid-column: 1/6;
+}
+.center .head-center > .container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0 5rem;
+}
+.center .option {
+    grid-column: 1/2;
+}
+.center .list-prod {
+    grid-column: 2/6;
+}
+.center .list-prod > .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem;
+    gap: 2rem;
+}
+.center .container {
+    margin: 1rem;
+    border-radius: var(--radius);
+    background-color: var(--white);
+}
+.center .head-center .container,
+.center .option .container {
+    height: 90%;
+}
+/* element prod */
+.center .prod-element {
+    background-image: url("/images/productLoadImage.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.2s;
+    box-shadow: 0 0 1.5rem var(--gray);
+    border-radius: var(--radius);
+    display: flex;
+    padding: 20vw 0 0;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.center .prod-element:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 1.5rem var(--gray-1);
+}
+.center .prod-element .prod-element-info {
+    display: flex;
+    padding: 10rem 0 1rem;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(#00000000, #00000000, var(--white), var(--white));
+    border-radius: var(--radius);
+    color: var(--violet);
+}
+.content .prod-element-info a {
+    background-color: var(--violet);
+    border-radius: var(--radius);
+    text-align: center;
+    padding: 0.5rem;
+}

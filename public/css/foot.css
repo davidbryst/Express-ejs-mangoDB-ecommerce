@@ -1,0 +1,43 @@
+/* foot */
+.foot {
+    background-color: var(--dark);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 25rem 5rem;
+    gap: 0.2rem;
+    color: var(--white);
+    grid-area: auto;
+    padding: 0.2rem 0;
+}
+.foot .top-foot {
+    grid-column: 1/5;
+    background-color: var(--violet-2);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.foot > a {
+    background-color: var(--violet-2);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    text-align: center;
+}
+.foot > a:hover {
+    background-color: var(--violet-1);
+}
+.foot #logo a {
+    color: var(--white);
+}
+.foot .contact {
+    width: 40rem;
+}
+.foot ul {
+    list-style: none;
+    margin: 15px;
+    font-weight: lighter;
+    color: var(--gray-2);
+}

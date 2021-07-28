@@ -1,0 +1,10 @@
+/* center */
+.center {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 10vh 1fr;
+    height: 60vh;
+    padding-top: 10vh;
+    row-gap: 1rem;
+    background-color: var(--white-1);
+}

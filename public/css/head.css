@@ -1,0 +1,70 @@
+/* head */
+.head {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    background-color: var(--white);
+    font-weight: bold;
+    box-shadow: 0 5px 1rem var(--gray);
+}
+#logo {
+    font-weight: bold;
+    font-size: xx-large;
+}
+#logo a {
+    color: var(--dark);
+    letter-spacing: 0.5rem;
+}
+#logo span {
+    font-weight: bolder;
+    color: var(--violet);
+}
+.head ul {
+    width: 15rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    font-size: 1.2rem;
+}
+.head li a {
+    margin: 0 0.5rem;
+    color: var(--dark);
+    transition: all 0.2s;
+}
+.head li a:hover {
+    color: var(--violet);
+}
+.head button,
+.head input {
+    border: none;
+    background-color: transparent;
+}
+.head input {
+    grid-column: 1/4;
+    color: var(--violet);
+    padding: 1rem;
+    font-size: medium;
+}
+.head button {
+    border-radius: var(--radius);
+    font-size: medium;
+    background-color: var(--violet);
+    color: var(--white);
+}
+.head form div {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 30rem;
+    height: 3rem;
+    border-radius: var(--radius);
+    box-shadow: 0 0 1rem var(--gray);
+    transition: all 0.2s;
+}
+.head form div:hover {
+    box-shadow: 0 0 1.5rem var(--gray-1);
+}

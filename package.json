@@ -1,0 +1,31 @@
+{
+  "name": "express-ejs-mangodb-ecommerce",
+  "version": "1.0.0",
+  "description": "this a ecommerce web site do with node.js, express.js, ejs, mangoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidbryst/Express-ejs-mangoDB-ecommerce.git"
+  },
+  "author": "David Ouattara Abraham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidbryst/Express-ejs-mangoDB-ecommerce/issues"
+  },
+  "homepage": "https://github.com/davidbryst/Express-ejs-mangoDB-ecommerce#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2",
+    "mongoose-unique-validator": "^2.0.3",
+    "path": "^0.12.7",
+    "validator": "^13.6.0"
+  }
+}
