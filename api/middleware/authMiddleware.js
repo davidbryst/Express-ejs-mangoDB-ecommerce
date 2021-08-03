@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const userModel = require('../model/users');
-const { JWT_SECRET } = require('../../setup/config/keys');
+const { SECRET } = require('../../setup/config/keys');
 
 const requestAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token){
     try {
-      const decodedToken = jwt.verify(token, JWT_SECRET);
+      console.log({ decodedToken: jwt.verify(token, SECRET)});
       next();
     } catch {
       res.redirect('/auth');
@@ -15,13 +15,12 @@ const requestAuth = (req, res, next) => {
     res.redirect('/auth');
   }
 };
-
 const checkUser = async (req, res, next) => {
   const token = req.cookies.jwt;
   if (token){
     try {
-      const decodedToken = jwt.verify(token, JWT_SECRET);
-      let user = await userModel.findById(decodedToken._id);
+      const decodedToken = jwt.verify(token, SECRET);
+      const user = await userModel.findById(decodedToken._id);
       res.locals.user = user;
       next();
     } catch {

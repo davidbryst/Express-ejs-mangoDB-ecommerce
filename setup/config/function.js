@@ -1,21 +1,21 @@
 /* This all of are helper function */
 const userModel = require("../../api/model/users");
 
-exports.toTitleCase = function (str) {
-  return str.replace(/\w\S*/g, function (txt) {
+exports.toTitleCase = (str) => {
+  return str.replace(/\w\S*/g, (txt) => {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 };
 
-exports.validateEmail = function (mail) {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+exports.validateEmail = (email) => {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return true;
   } else {
     return false;
   }
 };
 
-exports.emailCheckInDatabase = async function (email) {
+exports.emailCheckInDatabase = async (email) => {
   let user = await userModel.findOne({ email: email });
   user.exec((err, data) => {
     if (!data) {

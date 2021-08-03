@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-module.exports = function() {
+module.exports = () => {
     mongoose.connect('mongodb://localhost:27017/Ecommerce', {
         useNewUrlParser: true,
         useUnifiedTopology: true
