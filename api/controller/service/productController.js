@@ -3,20 +3,36 @@ const productSchema = require('../../model/produits');
 class ProductController {
     getAllProduct = (req, res) => {
         const url = req.originalUrl;
-        let products = 0;
         productSchema.find()
-        .then(data => res.status(200).json(data))
-        .catch(err => res.status(400).json(err));
-        //res.render('index', {products: products, url: url});
+        .then(products => res.status(200).render('index', {products: products, url: url}))
+        .catch(err => res.status(400).render('error', {error: err, url: url}));
+        // res.render('index', {url: url});
     };
 
-    getOneProduct = (req, res) => {
+    postProduct = (req, res) => {
         const url = req.originalUrl;
-        let product = 0;
+        const { name, description, price, quantity, images } = req.body;
+        productSchema({ name, description, price, quantity, images }).save()
+        .then(products => res.status(200).json({newPro: products}))
+        .catch(err => res.status(400).render('error', {error: err, url: url}));
+    };
+
+    getProduct = (req, res) => {
+        const url = req.originalUrl;
         productSchema.findById({ _id: req.params.id })
-        .then(data => res.status(200).json(data))
-        .catch(err => res.status(400).json(err));
+        .then(products => res.status(200).json({newPro: products}))
+        .catch(err => res.status(400).render('error', {error: err, url: url}));
+    };
+
+    putProduct = (req, res) => {
+        // thoing
+        res.status(200).json("en travail put");
+    };
+
+    deleteProduct = (req, res) => {
+        // thoing
+        res.status(200).json("en travail delete");
     };
 }
 
-module.exports = ProductController();
+module.exports = new ProductController();

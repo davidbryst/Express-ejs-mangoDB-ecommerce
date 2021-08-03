@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/basic.css">
+    <link rel="stylesheet" href="/css/head.css">
+    <link rel="stylesheet" href="/css/foot.css">
+    <title>KEBY</title>
+</head>
+<body>
+    <div class="content">
+        <!-- head -->
+        <%- include('./page/head.ejs') %>
+        <!-- /head -->
+        <!-- center -->
+        <center>
+            <div>error</div>
+            <% if (error) { %>
+                <div><%= error %> </div>
+            <% } %>
+        </center>
+        <!-- /center -->
+        <!-- foot -->
+        <%- include('./page/foot.ejs') %> 
+        <!-- /foot -->
+    </div>
+
+    <!-- js -->
+    <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/animateAuth.js"></script>
+    <!-- /js -->
+</body>
+</html>

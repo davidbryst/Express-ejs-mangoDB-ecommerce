@@ -25,30 +25,21 @@
             </div>
             <div class="list-prod">
                 <div class="container">
-                    <div class="prod-element">
-                        <div class="prod-element-info">
-                            <ul>
-                                <li>desc</li>
-                                <li>prix</li>
-                            </ul>
-                            <div class="control">
-                                <a href=""><i class="fas fa-heart"></i></a>
-                                <a href=""><i class="fas fa-cart-plus"></i></a>
+                    <% for( let index = 0; index < products.length; index++ ) { %>
+                        <div class="prodDB prod-element">
+                            <div class="prod-element-info">
+                                <ul>
+                                    <li><%= products[index].name %> </li>
+                                    <li><%= products[index].price %> </li>
+                                    <input type="hidden" name="id" value="<%= products[index] %> ">
+                                </ul>
+                                <div class="control">
+                                    <a href=""><i class="fas fa-heart"></i></a>
+                                    <a href=""><i class="fas fa-cart-plus"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="prod-element">
-                        <div class="prod-element-info">
-                            <ul>
-                                <li>desc</li>
-                                <li>prix</li>
-                            </ul>
-                            <div class="control">
-                                <a href=""><i class="fas fa-heart"></i></a>
-                                <a href=""><i class="fas fa-cart-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <% } %>
                     <div class="prod-element">
                         <div class="prod-element-info">
                             <ul>
@@ -96,6 +87,8 @@
 
     <!-- js -->
     <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/panierManipulater.js"></script>
     <!-- /js -->
 </body>
 </html>

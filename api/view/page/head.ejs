@@ -7,13 +7,17 @@
         </div>
     </form>
     <ul>
-        <% if (user) { %>
-            <li>welcome <%= user.username %> </li>
-            <li><a href="/logout">logout</a></li>
+        <% if (session.isAuth) { %>
+            <li>welcome <%= session.user.username %>  </li>
+            <li><a href="/auth/logout">logout</a></li>
         <% } else { %>
             <li><a href="/auth"><i class="fas fa-user-circle"></i></a></li>
         <% } %>
         <li><a href=""><i class="fas fa-heart"></i></a></li>
-        <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+        <% if (session.cart) { %>
+            <li><a href=""><i class="fas fa-shopping-cart"></i></a><span><%= session.cart.totalItems %> </span></li>
+        <% } else { %>
+            <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+        <% } %>
     </ul>
 </div>

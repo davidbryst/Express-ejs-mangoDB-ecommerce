@@ -20,15 +20,21 @@
             <div class="auth">
                 <div class="auth-content tp100">
                     <div class="auth-login tm100">
-                        <form method="POST" action="login">
+                        <form class="login" method="POST" action="auth/login">
                             <h1>LOGIN</h1>
                             <input type="email" name="email" placeholder="email">
                             <input type="password" name="password" placeholder="password">
+                            <% if (error) { %>
+                                <% for( message in error[-1] ) { %>
+                                    <h3><%= message %> </h3>
+                                    <% console.log(message); %> 
+                                <% } %>
+                            <% } %>
                             <button type="submit">Login</button>
                         </form>
                     </div>
                     <div class="auth-register tm100">
-                        <form method="POST" action="register">
+                        <form class="register" method="POST" action="auth/register">
                             <h1>REGISTER</h1>
                             <input type="text" name="username" placeholder="username">
                             <div class="sexe">
@@ -40,6 +46,12 @@
                             </div>
                             <input type="email" name="email" placeholder="email">
                             <input type="password" name="password" placeholder="password">
+                            <% if (error) { %>
+                                <% for( message in error[-1] ) { %>
+                                    <h3><%= message %> </h3>
+                                    <% console.log(message); %> 
+                                <% } %>
+                            <% } %>
                             <button type="submit">Register</button>
                         </form>
                     </div>
@@ -67,40 +79,7 @@
     <!-- js -->
     <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
     <script src="/js/jquery.js"></script>
-    <script>
-        $(() => {
-            var login = $('.splash-login');
-            var Register = $('.splash-register');
-            var splash = $('.splash');
-            var authContent = $('.auth-content');
-            login.click(() => {
-                splash.toggleClass('tp100');
-                let child = splash.children('*');
-                for (let index = 0; index < child.length; index++) {
-                    child.eq(index).addClass('tm100');
-                }
-
-                authContent.toggleClass('tp100');
-                let child1 = authContent.children('*');
-                for (let index = 0; index < child1.length; index++) {
-                    child1.eq(index).toggleClass('tm100');
-                }
-            });
-            Register.click(() => {
-                splash.toggleClass('tp100');
-                let child = splash.children('*');
-                for (let index = 0; index < child.length; index++) {
-                    child.eq(index).toggleClass('tm100');
-                }
-
-                authContent.toggleClass('tp100');
-                let child1 = authContent.children('*');
-                for (let index = 0; index < child1.length; index++) {
-                    child1.eq(index).toggleClass('tm100');
-                }
-            });
-        });
-    </script>
+    <script src="/js/animateAuth.js"></script>
     <!-- /js -->
 </body>
 </html>

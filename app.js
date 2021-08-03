@@ -1,13 +1,25 @@
+// importation
 const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('flash');
+
+
+// setup
+const { SECRET } = require('./setup/config/keys');
 const db = require('./setup/loader/db');
 
-// middleware
+// controller
 const authRoutes = require('./api/controller/route/authRoutes');
-const { checkUser } = require('./api/middleware/authMiddleware');
+const productRouter = require('./api/controller/route/productRouter');
+const cartRouter = require('./api/controller/route/cartRouter');
+
+// middleware
+const checkUser = require('./api/middleware/authMiddleware').checkUser;
 // const infoMiddleware = require('./api/middleware/infoMiddleware');
 
 // ejs
@@ -27,19 +39,40 @@ app.use(bodyParser.urlencoded({ extended : false }));
 // cookie parser
 app.use(cookieParser());
 
-//
+// express session
+app.use(session({
+    secret: SECRET,
+    name: 'sessionid',
+    cookie: {
+      maxAge: 1000 * 60 * 60 / 2,
+      secure: false,
+      sameSite: true
+    },
+    rolling: true,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongoUrl:'mongodb://localhost:27017/Ecommerce' }),
+}));
+
+// flash
+app.use(flash());
+
+// route
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.status(200);
+});
 app.get('*', checkUser);
-app.use('/', authRoutes);
+app.use('/', productRouter);
+app.use('/auth', authRoutes);
+app.use('/cart', cartRouter);
 
-// app.get("/", function(req, res, next){
-//     res.cookie('nexUser', false);
-//     res.cookie('isEmployee', true, {maxAge: 1000 * 60 * 60 * 24, httpOnly: true});
-    
-//     req.cookies;
-// })
+app.on('error', (err) => {
+    console.log('error detected '+err);
+})
 
-
-app.listen(3000, (err)=>{
+// listen
+app.listen(3000, (err) => {
     if (err) {
         console.log(err);
     };

@@ -1,73 +1,64 @@
-const {toTitleCase, validateEmail} = require("../../../setup/config/function");
-const bcrypt = require('bcryptjs');
 const userModel = require("../../model/users");
 
-const jwt = require("jsonwebtoken");
-const { SECRET } = require("../../../setup/config/keys");
-
-// generate jwt
-const maxAge = 60 * 60 * 24
-function generateJWT(user){
-    return jwt.sign({
-        _id: user._id,
-        role: user.userRole
-    },
-    SECRET,
-    {
-        expiresIn: maxAge,
-    });
-};
+// handle errors
+const handleErrors = (err) => {
+    let errors = { email: '', password: '' };
+  
+    // incorrect email
+    if (err.message === 'incorrect email') {
+      errors.email = 'That email is not registered';
+    }
+  
+    // incorrect password
+    if (err.message === 'incorrect password') {
+      errors.password = 'That password is incorrect';
+    }
+  
+    // validation errors
+    if (err.message.includes('users validation failed')) {
+        Object.values(err.errors).forEach(({ properties }) => {
+            errors[properties.path] = (properties.path === 'email')?'that email is already registered':properties.message;
+        });
+    }
+  
+    return errors;
+}
 
 class Auth {
     //register
-    async postRegister(req, res) {
+    postRegister(req, res) {
         let {username, sexe, email, password} = req.body;
-        try {
-            password = bcrypt.hashSync(password, 10);
-            let newUser = new userModel({
-                username, email, password, sexe,
-                // ========= Here role 1 for admin signup role 0 for customer signup =========
-                userRole: 0, // Field username change to userRole from role
-            });
-            newUser
-                .save()
-                .then((data) => {
-                    const token = generateJWT(data);
-                    return res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000})
-                        .status(200).redirect('/');
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } catch (err) {
-            console.log(err);
-        }
+        userModel({ username, email, password, sexe, userRole: 0 }).save()
+        .then(user => {
+            req.session.isAuth = true;
+            req.session.user = user;
+            res.status(201).redirect('/');
+        })
+        .catch(err => {
+            const error = handleErrors(err);
+            console.log((error));
+            res.status(201).redirect('/auth');
+        });
     }
     // login
-    async postLogin(req, res) {
+    postLogin(req, res) {
         let {email, password} = req.body;
-        try {
-            const data = await userModel.findOne({email: email});
-            if (!data) {
-                return res.status(400).json({error: "Invalid email or password"});
-            } else {
-                const login = await bcrypt.compare(password, data.password);
-                if (login) {
-                    const token = generateJWT(data);
-                    const encode = jwt.verify(token, SECRET);
-                    return res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000}).status(200).redirect('/');
-                } else {
-                    return res.status(400).json({error: "Invalid email or password"});
-                }
-            }
-        } catch (err) {
-            console.log(err);
-        }
+        userModel.login(email, password)
+        .then(user => {
+            req.session.isAuth = true;
+            req.session.user = user;
+            res.status(200).redirect('/');
+        })
+        .catch(err => {
+            const error = handleErrors(err);
+            console.log((error));
+            res.status(201).redirect('/auth');
+        });
     }
-    async getLogout(req, res) {
-        res.cookie('jwt', '', {maxAge: 1});
+    getLogout(req, res) {
+        req.session.isAuth = false;
+        delete req.session.user;
         res.redirect('/');
     }
 }
-const authController = new Auth();
-module.exports = authController;
+module.exports = new Auth();
