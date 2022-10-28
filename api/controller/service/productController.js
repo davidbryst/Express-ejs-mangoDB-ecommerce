@@ -1,26 +1,17 @@
 const productSchema = require('../../model/produits');
 
 class ProductController {
-    getAllProduct = (req, res) => {
-        const url = req.originalUrl;
-        productSchema.find()
-        .then(products => res.status(200).render('index', {products: products, url: url}))
-        .catch(err => res.status(400).render('error', {error: err, url: url}));
-        // res.render('index', {url: url});
-    };
-
     postProduct = (req, res) => {
         const url = req.originalUrl;
-        const { name, description, price, quantity, images } = req.body;
-        productSchema({ name, description, price, quantity, images }).save()
-        .then(products => res.status(200).json({newPro: products}))
-        .catch(err => res.status(400).render('error', {error: err, url: url}));
-    };
-
-    getProduct = (req, res) => {
-        const url = req.originalUrl;
-        productSchema.findById({ _id: req.params.id })
-        .then(products => res.status(200).json({newPro: products}))
+        const { name, description, price, quantity, section } = req.body;
+        var images = [];
+        req.files.forEach(element => {
+            element = element.path.split('\\');
+            images.push(element[element.length-1])
+        });
+        console.log(images);
+        productSchema({ name, description, price, quantity, images, section }).save()
+        .then(products => res.status(200).redirect('/auth/dash'))
         .catch(err => res.status(400).render('error', {error: err, url: url}));
     };
 

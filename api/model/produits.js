@@ -31,6 +31,9 @@ const productSchema = new mongoose.Schema({
       type: Array,
       required: [true, 'Please select a image'],
     },
+    section: {
+      type: String,
+    },
     // offer: {
     //   type: String,
     //   default: null,

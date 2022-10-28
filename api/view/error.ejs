@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>keby</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/basic.css">
-    <link rel="stylesheet" href="/css/head.css">
-    <link rel="stylesheet" href="/css/foot.css">
-    <title>KEBY</title>
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 </head>
-<body>
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
     <div class="content">
-        <!-- head -->
-        <%- include('./page/head.ejs') %>
-        <!-- /head -->
         <!-- center -->
         <center>
             <div>error</div>
@@ -22,13 +21,13 @@
             <% } %>
         </center>
         <!-- /center -->
-        <!-- foot -->
-        <%- include('./page/foot.ejs') %> 
-        <!-- /foot -->
     </div>
 
     <!-- js -->
-    <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/js/animateAuth.js"></script>
     <!-- /js -->

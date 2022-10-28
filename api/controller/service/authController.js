@@ -1,4 +1,6 @@
 const userModel = require("../../model/users");
+const cart = require('../../model/cart');
+const bcrypt = require('bcryptjs');
 
 // handle errors
 const handleErrors = (err) => {
@@ -26,13 +28,21 @@ const handleErrors = (err) => {
 
 class Auth {
     //register
-    postRegister(req, res) {
+    postRegister = (req, res) => {
         let {username, sexe, email, password} = req.body;
         userModel({ username, email, password, sexe, userRole: 0 }).save()
         .then(user => {
-            req.session.isAuth = true;
-            req.session.user = user;
-            res.status(201).redirect('/');
+            if (user) {
+                req.session.isAuth = true;
+                req.session.isAdmin = (user.userRole === 1)?true:false;
+                req.session.user = user;
+                if (!req.session.cart) {
+                    req.session.cart = new cart({});
+                }
+                res.status(201).redirect('/');
+            } else {
+                res.status(201).redirect('/auth');
+            }
         })
         .catch(err => {
             const error = handleErrors(err);
@@ -41,24 +51,48 @@ class Auth {
         });
     }
     // login
-    postLogin(req, res) {
+    postLogin = async (req, res) => {
         let {email, password} = req.body;
-        userModel.login(email, password)
-        .then(user => {
-            req.session.isAuth = true;
-            req.session.user = user;
-            res.status(200).redirect('/');
-        })
-        .catch(err => {
-            const error = handleErrors(err);
-            console.log((error));
-            res.status(201).redirect('/auth');
-        });
+        try {
+            const user = await userModel.findOne({ email: email });
+            if (user) {
+                const auth = await bcrypt.compare(password, user.password);
+                if (auth) {
+                    req.session.isAuth = true;
+                    req.session.isAdmin = (user.userRole === 1)?true:false;
+                    req.session.user = user;
+                    if (!req.session.cart) {
+                        req.session.cart = new cart({});
+                    }
+                    res.status(200).redirect('/');
+                }
+                else {
+                    res.status(400).redirect('/auth');
+                }
+            } else {
+                res.status(400).redirect('/auth');
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).redirect('/auth');
+        }
     }
-    getLogout(req, res) {
+    getLogout = (req, res) => {
         req.session.isAuth = false;
+        req.session.isAdmin = false;
         delete req.session.user;
         res.redirect('/');
     }
+    getAdmin = (req, res) => {
+        res.status(200).render('admin');
+    }
+
+    getAcountInfo = (req, res) => {
+        res.status(200).render('acountInfo');
+    };
+
+    getWishList = (req, res) => {
+        res.status(200).render('wishList');
+    };
 }
 module.exports = new Auth();

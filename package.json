@@ -27,6 +27,7 @@
     "flash": "^1.1.0",
     "mongoose": "^5.13.2",
     "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
     "path": "^0.12.7",
     "validator": "^13.6.0"
   }

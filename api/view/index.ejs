@@ -1,94 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>keby</title>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/basic.css">
-    <link rel="stylesheet" href="/css/head.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/foot.css">
-    <title>KEBY</title>
+    <meta name="description" content="Colo Shop Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 </head>
-<body>
-    <div class="content">
-        <!-- head -->
-        <%- include('./page/head.ejs') %>
-        <!-- /head -->
-        <!-- center -->
-        <div class="center">                
-            <div class="head-center">
-                <div class="container"><span>/home<%= url %> </span></div>
-            </div>
-            <div class="option">
-                <div class="container">space</div>
-            </div>
-            <div class="list-prod">
-                <div class="container">
-                    <% for( let index = 0; index < products.length; index++ ) { %>
-                        <div class="prodDB prod-element">
-                            <div class="prod-element-info">
-                                <ul>
-                                    <li><%= products[index].name %> </li>
-                                    <li><%= products[index].price %> </li>
-                                    <input type="hidden" name="id" value="<%= products[index] %> ">
-                                </ul>
-                                <div class="control">
-                                    <a href=""><i class="fas fa-heart"></i></a>
-                                    <a href=""><i class="fas fa-cart-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    <% } %>
-                    <div class="prod-element">
-                        <div class="prod-element-info">
-                            <ul>
-                                <li>desc</li>
-                                <li>prix</li>
-                            </ul>
-                            <div class="control">
-                                <a href=""><i class="fas fa-heart"></i></a>
-                                <a href=""><i class="fas fa-cart-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prod-element">
-                        <div class="prod-element-info">
-                            <ul>
-                                <li>desc</li>
-                                <li>prix</li>
-                            </ul>
-                            <div class="control">
-                                <a href=""><i class="fas fa-heart"></i></a>
-                                <a href=""><i class="fas fa-cart-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prod-element">
-                        <div class="prod-element-info">
-                            <ul>
-                                <li>desc</li>
-                                <li>prix</li>
-                            </ul>
-                            <div class="control">
-                                <a href=""><i class="fas fa-heart"></i></a>
-                                <a href=""><i class="fas fa-cart-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /center -->
-        <!-- foot -->
-        <%- include('./page/foot.ejs') %> 
-        <!-- /foot -->
+
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
+    
+    <div class="super_container">
+        
+        <%- include('./page/head.ejs') -%> 
+        
+        <%- include('./component/slider.ejs') -%> 
+        
+        <%- include('./component/newArrivals.ejs') -%> 
+        
+        <%- include('./component/benefit.ejs') -%> 
+        
+        <%- include('./component/bestSellers.ejs') -%> 
+        
+        <%- include('./component/newsLetter.ejs') -%> 
+        
+        <%- include('./page/foot.ejs') -%> 
+
     </div>
 
-    <!-- js -->
-    <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
-    <script src="/js/jquery.js"></script>
-    <script src="/js/panierManipulater.js"></script>
-    <!-- /js -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/js/custom.js"></script>
 </body>
+
 </html>

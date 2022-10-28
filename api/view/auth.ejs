@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>keby</title>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Colo Shop Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
+
+    
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/head.css">
     <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/foot.css">
-    <title>KEBY</title>
+
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 </head>
-<body>
+
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
     <div class="content">
         <!-- head -->
         <%- include('./page/head.ejs') %>
@@ -58,13 +71,13 @@
                 </div>
                 <div class="splash">
                     <div>
-                        <h1>Welcome Back!</h1>
-                        <p>Pour rester connecté avec nous, veuillez vous connecter avec vos informations personnelles</p>
+                        <h1>Hello, Friend!</h1>
+                        <p>Entrez vos données personnelles et commencez votre voyage avec nous</p>
                         <button class="splash-login">Login</button>
                     </div>
                     <div>
-                        <h1>Hello, Friend!</h1>
-                        <p>Entrez vos données personnelles et commencez votre voyage avec nous</p>
+                        <h1>Welcome Back!</h1>
+                        <p>Pour rester connecté avec nous, veuillez vous connecter avec vos informations personnelles</p>
                         <button class="splash-register">Register</button>
                     </div>
                 </div>
@@ -76,10 +89,45 @@
         <!-- /foot -->
     </div>
 
-    <!-- js -->
-    <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
-    <script src="/js/jquery.js"></script>
-    <script src="/js/animateAuth.js"></script>
-    <!-- /js -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/js/custom.js"></script>
+    <script>
+        $(function(){
+            var login = $('.splash-login');
+            var Register = $('.splash-register');
+            var splash = $('.splash');
+            var authContent = $('.auth-content');
+            login.click(function(){
+                splash.toggleClass('tp100');
+                let child = splash.children('*');
+                for (let index = 0; index < child.length; index++) {
+                    child.eq(index).addClass('tm100');
+                }
+                authContent.toggleClass('tp100');
+                let child1 = authContent.children('*');
+                for (let index = 0; index < child1.length; index++) {
+                    child1.eq(index).toggleClass('tm100');
+                }
+            });
+            Register.click(function(){
+                splash.toggleClass('tp100');
+                let child = splash.children('*');
+                for (let index = 0; index < child.length; index++) {
+                    child.eq(index).toggleClass('tm100');
+                }
+                authContent.toggleClass('tp100');
+                let child1 = authContent.children('*');
+                for (let index = 0; index < child1.length; index++) {
+                    child1.eq(index).toggleClass('tm100');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,32 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <title>keby</title>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Colo Shop Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+    <link rel="stylesheet" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
+
     <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/head.css">
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/foot.css">
-    <title>KEBY</title>
 </head>
-<body>
+
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
     <div class="content">
         <!-- head -->
         <%- include('./page/head.ejs') %>
         <!-- /head -->
         <!-- center -->
-        <div class="center">                
-            dashbord
-        </div>
+        <div class="center">
+            <form method="POST" action="/product" enctype="multipart/form-data" class="addProduct">
+                <div class="left">
+                    <h3>UPLOAD IMAGE</h3>
+                    <input id="fileInput" name="images" type="file" hidden/>
+                    <button class="btn-file">UPLOAD PRODUCT IMAGE</button>
+                    <button disabled hidden style="opacity: 0.7;"></button>
+                    <img hidden src="/images/default_product.png" alt="">
+                </div>
+                <div>
+                    
+                </div>
+                <div class="right">
+                    <input name="name" type="text" placeholder="name" required/>
+                    <input name="price" multiple type="number" placeholder="price" required/>
+                    <input name="quantity" type="number" placeholder="quantity" required/>
+                    <div class="section">
+                        <span style="display: block; margin-bottom: 10px;" >section</span>
+                        <input type="radio" name="section" value="arrival" checked>
+                        <label for="arrival">arrival</label>
+                        <input type="radio" name="section" value="popular">
+                        <label for="popular">popular</label>
+                        <input type="radio" name="section" value="trending">
+                        <label for="trending">trending</label>
+                    </div>
+                    <textarea name="description" placeholder="description" required></textarea>
+                    <button type="submit">submit</button>
+                </div>
+          </form>
+        </div>            
         <!-- /center -->
         <!-- foot -->
         <%- include('./page/foot.ejs') %> 
         <!-- /foot -->
     </div>
 
-    <!-- js -->
-    <script src="https://kit.fontawesome.com/f5f4cb5593.js" crossorigin="anonymous"></script>
-    <!-- /js -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="/js/custom.js"></script>
+    <script>
+        $('.btn-file').click((e) => {
+            e.preventDefault();
+            $('#fileInput').click();
+        });
+        $('#fileInput').change(() => {
+            $('.btn-file +').removeAttr('hidden').text($('#fileInput').val());
+           // var tt = $('#fileInput').val().split('\\');
+            // tt = tt[tt.length-1]
+            // console.log($('#fileInput').val());
+            // $('.left img').attr('src', $('#fileInput').val());
+        });
+    </script>
 </body>
 </html>

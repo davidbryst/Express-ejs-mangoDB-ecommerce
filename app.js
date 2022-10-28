@@ -6,17 +6,18 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const flash = require('flash');
+// const flash = require('flash');
 
 
 // setup
 const { SECRET } = require('./setup/config/keys');
 const db = require('./setup/loader/db');
 
-// controller
+// router
 const authRoutes = require('./api/controller/route/authRoutes');
 const productRouter = require('./api/controller/route/productRouter');
 const cartRouter = require('./api/controller/route/cartRouter');
+const router = require('./api/controller/route/router');
 
 // middleware
 const checkUser = require('./api/middleware/authMiddleware').checkUser;
@@ -55,15 +56,16 @@ app.use(session({
 }));
 
 // flash
-app.use(flash());
+// app.use(flash());
 
 // route
-app.post('/', (req, res) => {
-    console.log(req.body);
-    res.status(200);
+app.get('/tt', (req, res) => {
+    console.log(req.path);
+    res.redirect('/auth');
 });
 app.get('*', checkUser);
-app.use('/', productRouter);
+app.use('/', router);
+app.use('/product', productRouter);
 app.use('/auth', authRoutes);
 app.use('/cart', cartRouter);
 

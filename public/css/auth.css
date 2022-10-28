@@ -1,15 +1,18 @@
 /* center */
 .center {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 80vh auto;
+    grid-template-rows: 75vh auto;
     row-gap: 1rem;
-    padding-top: 12vh;
+    padding: 20vh 0 5vh;
     background-color: var(--white-1);
 }
 .center .auth {
     background-color: var(--white);
-    grid-column: 3/6;
+    grid-column: 3/8;
+    width: 80%;
+    justify-self: center;
+    border-radius: var(--radius);
+    box-shadow: 0 0 1rem gainsboro;
     position: relative;
 }
 .center .auth .auth-content{
@@ -29,6 +32,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .center .auth .auth-content form > * {
@@ -44,7 +48,7 @@
     border-radius: var(--radius);
 }
 .center .auth .auth-content form button {
-    background-color: var(--violet);
+    background-image: linear-gradient(90deg, #ff0099, #fe4c50);
     border: none;
     padding: 1rem 1.5rem;
     border-radius: var(--radius);
@@ -53,32 +57,52 @@
 .center .auth .auth-content form h1 {
     font-weight: bolder;
     margin-top: 5rem;
-    color: var(--violet);
+    /* background: linear-gradient(90deg, #ff0099, #fe4c50);
+    background-clip: text;
+    text-fill-color: transparent; */
+    background: -webkit-linear-gradient(90deg, #ff0099, #fe4c50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .center .auth .auth-content form input[type="text"],
 .center .auth .auth-content form input[type="number"],
 .center .auth .auth-content form input[type="email"],
 .center .auth .auth-content form input[type="password"],
 .center .auth .auth-content form .sexe {
-    width: 15rem;
+    width: 20rem;
+}
+.center .auth .auth-content form input[type="text"]::placeholder,
+.center .auth .auth-content form input[type="number"]::placeholder,
+.center .auth .auth-content form input[type="email"]::placeholder,
+.center .auth .auth-content form input[type="password"]::placeholder,
+.center .auth .auth-content form .sexe span,
+.center .auth .auth-content form .sexe label {
     color: var(--dark);
+    font-weight: bold;
 }
 .center .auth .splash {
-    background-image: linear-gradient(90deg, #cd2be2, violet);
+    background-image: linear-gradient(90deg, #ff0099, #fe4c50);
     height: 100%;
+    box-shadow: 0 0 0.2rem #ff0099;
     width: 50%;
-    z-index: 10;
-    color: var(--white);
+    z-index: 1;
     display: grid;
     overflow: hidden;
     grid-template-columns: 100% 100%;
     grid-template-rows: 100%;
+    border-radius: var(--radius);
     transition: all 1s;
+}
+.center .auth .splash h1,
+.center .auth .splash p {
+    color: #fff;
+    width: 60%;
 }
 .center .auth .splash > * {
     transition: all 1s;
     display: flex;
     flex-direction: column;
+    /* padding: 10rem; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -88,10 +112,10 @@
 }
 .center .auth .splash > * > button {
     background-color: transparent;
-    border: 1px solid var(--white);
+    border: 1px solid #fff;
     padding: 1rem 1.5rem;
     border-radius: var(--radius);
-    color: var(--white);
+    color: #fff;
 }
 .tm100 {
     transform: translateX(-100%);

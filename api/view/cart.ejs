@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>keby</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/plugins/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/linearicons-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="/styles/util.css">
+	<link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/categories_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
+</head>
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
+	
+    <div class="super_container">
+		
+		<%- include('./page/head.ejs') -%> 
+		
+		<div class="container single_product_container" style="padding-top: 15vh;">
+			<div class="row">
+				<div class="col">
+		
+					<!-- Breadcrumbs -->
+					<% console.log(cart, session.cart); %> 
+					<div class="breadcrumbs d-flex flex-row align-items-center">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>cart</a></li>
+						</ul>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+
+		<%- include('./component/shopingCart.ejs') -%>
+		
+		<%- include('./component/benefit.ejs') -%> 
+		
+		<%- include('./component/newsLetter.ejs') -%> 
+		
+		<%- include('./page/foot.ejs') -%> 
+
+	</div>
+    
+
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
+	<script src="/styles/bootstrap4/popper.js"></script>
+	<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/plugins/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			})
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="/plugins/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="/js/main.js"></script>
+	<script>
+	</script>
+
+</body>
+</html>

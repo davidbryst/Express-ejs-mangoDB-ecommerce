@@ -1,10 +1,10 @@
 const Router = require('express').Router();
 const productController = require('../service/productController');
+const multerMiddleware = require('../../middleware/multerMiddleware');
+const requestAdmin = require('../../middleware/authMiddleware').requestAdmin;
 
-Router.get('/', productController.getAllProduct);
-Router.post('/product', productController.postProduct);
-Router.get('/product', productController.getProduct);
-Router.put('/product', productController.putProduct);
-Router.delete('/product', productController.deleteProduct);
+Router.post('/', requestAdmin, multerMiddleware.any(), productController.postProduct);
+Router.put('/', requestAdmin, productController.putProduct);
+Router.delete('/', requestAdmin, productController.deleteProduct);
 
 module.exports = Router;

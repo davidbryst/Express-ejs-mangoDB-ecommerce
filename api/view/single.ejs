@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>keby</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Colo Shop Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/single_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/single_responsive.css">
+</head>
+
+<body class="animsition" style="animation-duration: 1500ms; opacity: 1;">
+
+    <div class="super_container">
+        
+        <%- include('./page/head.ejs') -%> 
+        
+        <% if (product) { %>
+         
+            <%- include('./component/singleProduct.ejs') -%> 
+        
+            <%# include('./component/tabInfoProduct.ejs') -%> 
+
+        <% } %>
+        
+        <%- include('./component/benefit.ejs') -%> 
+        
+        <%- include('./component/newsLetter.ejs') -%> 
+        
+        <%- include('./page/foot.ejs') -%> 
+
+    </div>
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/plugins/animsition/js/animsition.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="/js/single_custom.js"></script>
+</body>
+
+</html>

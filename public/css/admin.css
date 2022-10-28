@@ -1,10 +1,63 @@
 /* center */
 .center {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 10vh 1fr;
-    height: 60vh;
-    padding-top: 10vh;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 77vh auto;
+    padding: 20vh 0 15vh;
     row-gap: 1rem;
     background-color: var(--white-1);
+}
+
+.center .addProduct {
+    background-color: var(--white);
+    grid-column: 3/8;
+    border-radius: var(--radius);
+    box-shadow: 0 0 1rem gainsboro;
+    display: flex;
+}
+
+.center .addProduct > div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.center .addProduct > div:nth-child(2){
+    width: 1%;
+    background-image: linear-gradient(90deg, #ff0099, #fe4c50);
+}
+
+.center .addProduct > * > input,
+.center .addProduct > * > textarea, 
+.center .addProduct > * > .section {
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    border: none;
+    box-shadow: 0 0 0.5rem var(--gray);
+    border-radius: var(--radius);
+    margin: 1rem 0;
+    width: 20rem;
+}
+
+.center .addProduct > * > input::placeholder,
+.center .addProduct > * > textarea::placeholder, 
+.center .addProduct > * > .section span, 
+.center .addProduct > * > .section label {
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.center .addProduct > * > button {
+    background-image: linear-gradient(90deg, #ff0099, #fe4c50);
+    border: none;
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    color: var(--white);
+}
+
+textarea {
+    height: 15vh;
 }

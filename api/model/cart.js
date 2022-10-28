@@ -1,11 +1,9 @@
-module.exports = class {
-    constructor(cart) {
-        this.items = cart.items || {};
-        this.totalItems = cart.totalItems || 0;
-        this.totalPrice = cart.totalPrice || 0;
-    }
+module.exports = function Cart(cart) {
+    this.items = cart.items || {};
+    this.totalItems = cart.totalItems || 0;
+    this.totalPrice = cart.totalPrice || 0;
 
-    add = (item, id) => {
+    this.add = (item, id) => {
         var cartItem = this.items[id];
         if (!cartItem) {
             cartItem = {item: item, quantity: 0, price: 0};
@@ -17,13 +15,13 @@ module.exports = class {
         this.totalPrice += cartItem.item.price;
     };
 
-    remove = (id) => {
-        this.totalItems --;
+    this.remove = (id) => {
+        this.totalItems -= this.items[id].quantity;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
     };
     
-    getItems = () => {
+    this.getItems = () => {
         var arr = [];
         for (var id in this.items) {
             arr.push(this.items[id]);
